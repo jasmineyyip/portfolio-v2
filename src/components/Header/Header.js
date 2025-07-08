@@ -26,21 +26,18 @@ const Header = () => {
         setIsSearchFocused(false);
     };
 
-    // Handle clicks outside the search container
+    // Hides the menu drop down when clicked away
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (searchContainerRef.current && !searchContainerRef.current.contains(event.target)) {
-                setShowDropdown(false);
-                setIsSearchFocused(false);
+                if (showDropdown) {
+                    setShowDropdown(false);
+                    setIsSearchFocused(false);
+                }
             }
         };
-
-        // Add event listener when dropdown is open
-        if (showDropdown) {
-            document.addEventListener('mousedown', handleClickOutside);
-        }
-
-        // Cleanup function to remove event listener
+    
+        document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
