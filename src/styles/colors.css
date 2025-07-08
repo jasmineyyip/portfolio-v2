@@ -1,0 +1,24 @@
+/* colors.css - Design System Color Variables */
+:root {
+    /* Background Colors */
+    --bg-primary: #000000;       /* Main black background */
+    --bg-secondary: #121212;     /* Dark grey backgrounds */
+    --bg-surface: #282828;       /* Cards, dropdowns, surfaces */
+    --bg-focused: #1a1a1a;
+    --bg-light: #1f1f1f;
+    
+    /* Text Colors */
+    --text-primary: #fdfdfd;     /* Primary off-white text */
+    --text-muted: #a7a7a7;       /* Muted grey text */
+    
+    /* Border Colors */
+    --border-primary: #363636;   /* Default borders */
+    --border-focus: #fdfdfd;     /* Focus/active borders */
+    --border-hover: #535353;     /* Hover borders */
+    
+    /* Shadow */
+    --shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.5);
+    
+    /* Transitions */
+    --transition-default: all 0.2s ease;
+  }

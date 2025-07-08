@@ -1,4 +1,6 @@
 /* App.css */
+@import './styles/colors.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -9,28 +11,27 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #121212;
-  color: #ffffff;
+  background-color: var(--bg-secondary);
+  color: var(--border-focus);
 }
 
 .App {
   min-height: 100vh;
-  background-color: #121212;
+  background-color: var(--bg-secondary);
 }
 
 .main-content {
   padding-top: 80px;
-  /* Account for fixed header */
   padding: 80px 24px 24px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .main-content h1 {
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 16px;
 }
 
 .main-content p {
-  color: #a7a7a7;
+  color: var(--text-muted);
 }

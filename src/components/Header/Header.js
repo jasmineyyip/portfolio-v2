@@ -116,7 +116,7 @@ const Header = () => {
                 {/* Right - Social Media Icons */}
                 <div className="header-social">
                     <a
-                        href="https://linkedin.com/in/yourprofile"
+                        href="https://www.linkedin.com/in/jasmine-yyy"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="social-link"
@@ -146,7 +146,7 @@ const Header = () => {
                         </svg>
                     </a>
                     <a
-                        href="https://github.com/yourusername"
+                        href="https://github.com/jasmineyyip"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="social-link"

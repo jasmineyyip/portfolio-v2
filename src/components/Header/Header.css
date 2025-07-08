@@ -1,13 +1,15 @@
 /* Header.css */
+@import '../../styles/colors.css';
+
 .header {
-    background-color: #000000;
+    background-color: var(--bg-primary);
     padding: 12px 24px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    border-bottom: 1.5px solid #282828;
+    border-bottom: 1.5px solid var(--bg-surface);
 }
 
 .header-content {
@@ -49,8 +51,8 @@
 .search-bar {
     display: flex;
     align-items: center;
-    background-color: #121212;
-    border: 1.5px solid #404040;
+    background-color: var(--bg-secondary);
+    border: 1.5px solid var(--border-primary);
     border-radius: 24px;
     padding: 10px 16px;
     cursor: text;
@@ -58,16 +60,16 @@
 }
 
 .search-bar:hover {
-    border-color: #535353;
+    border-color: var(--border-hover);
 }
 
 .search-bar.focused {
-    border-color: #ffffff;
-    background-color: #1a1a1a;
+    border-color: var(--border-focus);
+    background-color: var(--bg-focused);
 }
 
 .search-icon {
-    color: #a7a7a7;
+    color: var(--text-muted);
     margin-right: 12px;
     flex-shrink: 0;
 }
@@ -75,7 +77,7 @@
 .search-input {
     background: none;
     border: none;
-    color: #a7a7a7;
+    color: var(--text-muted);
     font-size: 16px;
     width: 100%;
     outline: none;
@@ -83,7 +85,7 @@
 }
 
 .search-input::placeholder {
-    color: #a7a7a7;
+    color: var(--text-muted);
 }
 
 /* Dropdown */
@@ -92,11 +94,11 @@
     top: 100%;
     left: 0;
     right: 0;
-    background-color: #282828;
-    border: 1.5px solid #404040;
+    background-color: var(--bg-surface);
+    border: 1.5px solid var(--border-primary);
     border-radius: 8px;
     margin-top: 4px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--shadow-dropdown);
     z-index: 1001;
     overflow: hidden;
     padding: 8px;
@@ -104,7 +106,7 @@
 
 .dropdown-header {
     padding: 8px 12px;
-    color: #a7a7a7;
+    color: var(--text-muted);
     font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
@@ -116,7 +118,7 @@
     display: flex;
     align-items: center;
     padding: 10px 12px;
-    color: #ffffff;
+    color: var(--text-primary);
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 14px;
@@ -126,37 +128,31 @@
 }
 
 .dropdown-item:hover {
-    background-color: #404040;
+    background-color: var(--border-primary);
 }
 
 .dropdown-icon-container {
     width: 44px;
     height: 44px;
-    background-color: #1f1f1f;;
+    background-color: var(--bg-light);
     border-radius: 50%;
-    /* Make it circular */
     display: flex;
-    /* Add flex to center the icon */
     align-items: center;
-    /* Center vertically */
     justify-content: center;
-    /* Center horizontally */
     transition: all 0.2s ease;
-    /* Add transition for hover effect */
 }
 
 .dropdown-icon {
-    color: #a7a7a7;
+    color: var(--text-muted);
     transition: color 0.2s ease;
 }
 
 .dropdown-item:hover .dropdown-icon-container {
-    background-color: #404040;
-    /* Change background on hover */
+    background-color: var(--border-primary);
 }
 
 .dropdown-item:hover .dropdown-icon {
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .dropdown-item span {
@@ -174,7 +170,7 @@
 }
 
 .dropdown-title {
-    color: #fdfdfd;
+    color: var(--text-primary);
     font-size: 15px;
     font-weight: 500;
     line-height: 1.4;
@@ -182,7 +178,7 @@
 }
 
 .dropdown-subtitle {
-    color: #a7a7a7;
+    color: var(--text-muted);
     font-size: 14px;
     font-weight: 400;
     line-height: 1.4;
@@ -206,23 +202,23 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #121212;
+    background-color: var(--bg-secondary);
     transition: all 0.2s ease;
     text-decoration: none;
 }
 
 .social-link:hover {
-    background-color: #282828;
+    background-color: var(--bg-surface);
     transform: scale(1.05);
 }
 
 .social-icon {
-    color: #a7a7a7;
+    color: var(--text-muted);
     transition: color 0.2s ease;
 }
 
 .social-link:hover .social-icon {
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 /* Responsive Design */
