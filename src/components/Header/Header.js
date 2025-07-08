@@ -58,6 +58,34 @@ const Header = () => {
                     />
                 </div>
 
+                {/* Mobile Navigation - only visible on mobile */}
+                <div className="mobile-nav">
+                    <div
+                        className="mobile-nav-item"
+                        onClick={() => handleDropdownClick('about-me')}
+                    >
+                        About Me
+                    </div>
+                    <div
+                        className="mobile-nav-item"
+                        onClick={() => handleDropdownClick('work-experience')}
+                    >
+                        Work Experience
+                    </div>
+                    <div
+                        className="mobile-nav-item"
+                        onClick={() => handleDropdownClick('projects')}
+                    >
+                        Sidequests
+                    </div>
+                    <div
+                        className="mobile-nav-item"
+                        onClick={() => handleDropdownClick('contact')}
+                    >
+                        Contact
+                    </div>
+                </div>
+
                 {/* Center - Search Bar */}
                 <div className="header-search">
                     <div className="search-container">
@@ -96,6 +124,21 @@ const Header = () => {
                                 <div className="dropdown-header">Top Searches</div>
                                 <div
                                     className="dropdown-item"
+                                    onClick={() => handleDropdownClick('about-me')}
+                                >
+                                    <div className="dropdown-icon-container">
+                                        <svg className="dropdown-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.5" />
+                                            <path d="M5 21v-2a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v2" stroke="currentColor" strokeWidth="1.5" />
+                                        </svg>
+                                    </div>
+                                    <div className="dropdown-text">
+                                        <span className="dropdown-title">About Me</span>
+                                        <span className="dropdown-subtitle">Who am I?</span>
+                                    </div>
+                                </div>
+                                <div
+                                    className="dropdown-item"
                                     onClick={() => handleDropdownClick('work-experience')}
                                 >
                                     <div className="dropdown-icon-container">
@@ -126,8 +169,23 @@ const Header = () => {
                                         </svg>
                                     </div>
                                     <div className="dropdown-text">
-                                        <span className="dropdown-title">Projects</span>
-                                        <span className="dropdown-subtitle">Cool stuff I worked on</span>
+                                        <span className="dropdown-title">Sidequests</span>
+                                        <span className="dropdown-subtitle">Cool side projects I worked on</span>
+                                    </div>
+                                </div>
+                                <div
+                                    className="dropdown-item"
+                                    onClick={() => handleDropdownClick('contact')}
+                                >
+                                    <div className="dropdown-icon-container">
+                                        <svg className="dropdown-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                                            <path d="M22 6L12 13L2 6" stroke="currentColor" strokeWidth="1.5" />
+                                        </svg>
+                                    </div>
+                                    <div className="dropdown-text">
+                                        <span className="dropdown-title">Contact</span>
+                                        <span className="dropdown-subtitle">Let's be friends!</span>
                                     </div>
                                 </div>
                             </div>
