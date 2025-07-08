@@ -1,0 +1,278 @@
+/* Header.css */
+.header {
+    background-color: #000000;
+    padding: 12px 24px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    border-bottom: 1.5px solid #282828;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 48px;
+}
+
+/* Logo Section */
+.header-logo {
+    flex: 0 0 auto;
+    min-width: 120px;
+}
+
+.logo-image {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Search Section */
+.header-search {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 40px;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #121212;
+    border: 1.5px solid #404040;
+    border-radius: 24px;
+    padding: 10px 16px;
+    cursor: text;
+    transition: all 0.2s ease;
+}
+
+.search-bar:hover {
+    border-color: #535353;
+}
+
+.search-bar.focused {
+    border-color: #ffffff;
+    background-color: #1a1a1a;
+}
+
+.search-icon {
+    color: #a7a7a7;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.search-input {
+    background: none;
+    border: none;
+    color: #a7a7a7;
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+}
+
+.search-input::placeholder {
+    color: #a7a7a7;
+}
+
+/* Dropdown */
+.search-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #282828;
+    border: 1.5px solid #404040;
+    border-radius: 8px;
+    margin-top: 4px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    overflow: hidden;
+    padding: 8px;
+}
+
+.dropdown-header {
+    padding: 8px 12px;
+    color: #a7a7a7;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    border-radius: 4px;
+    margin: 2px 0;
+    gap: 12px;
+}
+
+.dropdown-item:hover {
+    background-color: #404040;
+}
+
+.dropdown-icon-container {
+    width: 44px;
+    height: 44px;
+    background-color: #1f1f1f;;
+    border-radius: 50%;
+    /* Make it circular */
+    display: flex;
+    /* Add flex to center the icon */
+    align-items: center;
+    /* Center vertically */
+    justify-content: center;
+    /* Center horizontally */
+    transition: all 0.2s ease;
+    /* Add transition for hover effect */
+}
+
+.dropdown-icon {
+    color: #a7a7a7;
+    transition: color 0.2s ease;
+}
+
+.dropdown-item:hover .dropdown-icon-container {
+    background-color: #404040;
+    /* Change background on hover */
+}
+
+.dropdown-item:hover .dropdown-icon {
+    color: #ffffff;
+}
+
+.dropdown-item span {
+    flex: 1;
+}
+
+.dropdown-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    flex: 1;
+    min-height: 32px;
+    /* Match icon height */
+}
+
+.dropdown-title {
+    color: #fdfdfd;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    display: block;
+}
+
+.dropdown-subtitle {
+    color: #a7a7a7;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    display: block;
+}
+
+/* Social Media Section */
+.header-social {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 0 0 auto;
+    min-width: 120px;
+    justify-content: flex-end;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #121212;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background-color: #282828;
+    transform: scale(1.05);
+}
+
+.social-icon {
+    color: #a7a7a7;
+    transition: color 0.2s ease;
+}
+
+.social-link:hover .social-icon {
+    color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        padding: 8px 16px;
+    }
+
+    .header-content {
+        height: 40px;
+    }
+
+    .header-search {
+        margin: 0 20px;
+    }
+
+    .header-logo {
+        min-width: 60px;
+    }
+
+    .logo-image {
+        height: 24px;
+    }
+
+    .header-social {
+        min-width: 80px;
+        gap: 12px;
+    }
+
+    .social-link {
+        width: 36px;
+        height: 36px;
+    }
+
+    .social-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-search {
+        margin: 0 10px;
+    }
+
+    .search-input {
+        font-size: 12px;
+    }
+
+    .search-input::placeholder {
+        font-size: 12px;
+    }
+}
