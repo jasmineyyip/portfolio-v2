@@ -1,11 +1,5 @@
 @import '../../styles/colors.css';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-@font-face {
-    font-family: 'Gotham';
-    src: url('../../../public/fonts/Gotham\ Bold.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
 
 .profile-section {
     background: linear-gradient(to top,
