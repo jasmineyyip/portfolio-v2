@@ -13,25 +13,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-secondary);
   color: var(--border-focus);
+  overflow: hidden;
 }
 
 .App {
-  min-height: 100vh;
+  height: 100vh;
   background-color: var(--bg-secondary);
 }
 
-.main-content {
-  padding-top: 80px;
-  padding: 80px 24px 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.main-content h1 {
-  color: var(--text-primary);
-  margin-bottom: 16px;
-}
-
-.main-content p {
-  color: var(--text-muted);
+.main-layout {
+  flex: 1;
+  display: flex;
+  height: calc(100vh - 82px); /* subtract header height */
+  margin: 72px 10px 10px 10px;
+  gap: 10px;
+  overflow: hidden;
 }

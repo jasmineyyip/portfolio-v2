@@ -1,0 +1,8 @@
+.right-section {
+    flex: 4;
+    background-color: red;
+    border-radius: 10px;
+    overflow-y: auto;
+    padding: 20px;
+    color: white;
+}
