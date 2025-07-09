@@ -1,0 +1,146 @@
+@import '../../styles/colors.css';
+
+.work-experience {
+    margin: 0 20px 40px 20px;
+}
+
+.section-title {
+    color: var(--text-primary);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-left: 4px;
+    letter-spacing: -0.8px;
+}
+
+.work-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.work-item {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-top: 1px solid var(--border-primary);
+    padding-bottom: 24px;
+}
+
+.work-item:hover {
+    background-color: var(--bg-focused);
+}
+
+.work-image {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+}
+
+.company-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+    background-color: #2a2a2a;
+}
+
+.work-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.work-main-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.company-name {
+    color:  var(--text-primary);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.job-title {
+    color: #b3b3b3;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.job-location {
+    color: #888888;
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.work-meta {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.date-range {
+    color: #888888;
+    font-size: 13px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.work-description {
+    margin-top: 8px;
+}
+
+.description-point {
+    color: #b3b3b3;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 8px 0;
+}
+
+.description-point:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .work-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .work-meta {
+        align-items: flex-start;
+    }
+
+    .date-range {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 480px) {
+    .work-item {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .work-image {
+        width: 48px;
+        height: 48px;
+    }
+}

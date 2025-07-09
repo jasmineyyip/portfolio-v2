@@ -1,11 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import logo from '../../assets/yip-logo.png';
+import logo from '../../assets/yip_logo.png';
 import './Header.css';
 
 const Header = () => {
     const [isSearchFocused, setIsSearchFocused] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
-    const searchContainerRef = useRef(null);
 
     const handleSearchClick = () => {
         setIsSearchFocused(true);

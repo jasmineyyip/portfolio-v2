@@ -1,6 +1,6 @@
 @import '../../styles/colors.css';
 
-.right-section {
+.main-content {
     flex: 4;
     background-color: var(--bg-secondary);
     border-radius: 10px;

@@ -3,7 +3,7 @@ import './Sidebar.css';
 
 const Sidebar = () => {
     return (
-        <div className="left-section">
+        <div className="sidebar">
             <p>Left Section (1/5 width)</p>
         </div>
     );
