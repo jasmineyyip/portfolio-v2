@@ -1,19 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Projects.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
-
-// video and thumbnail imports
-import sequenceThumbnail from '../../assets/demos/thumbnails/sequence.png';
-import sequenceVideo from '../../assets/demos/videos/sequence.mp4';
-import uscclimbingThumbnail from '../../assets/demos/thumbnails/usc_climbing.png';
-// import uscclimbingVideo from '../../assets/demos/thumbnails/usc_climbing.png';
-import mutualfundThumbnail from '../../assets/demos/thumbnails/mutualfund.png';
-import cookieaiThumbnail from '../../assets/demos/thumbnails/cookieai.png'
+import { storage } from '../../firebase/config';
+import { ref, getDownloadURL } from 'firebase/storage';
 
 const Projects = () => {
     const [hoveredCard, setHoveredCard] = useState(null);
     const [playingVideos, setPlayingVideos] = useState({});
+    const [mediaUrls, setMediaUrls] = useState({});
+    const [loading, setLoading] = useState(true);
     const videoRefs = useRef({});
 
     const projectsData = [
@@ -23,8 +19,8 @@ const Projects = () => {
             website: 'https://www.sequencestories.com/',
             date: 'Feb 2024 - May 2024',
             description: 'Full-stack whiteboard tool built with React.js and Firebase, allowing choose-your-own-adventure story writers to map out branching story lines and publish stories for readers to discover.',
-            videoThumbnail: sequenceThumbnail,
-            demoVideo: sequenceVideo,
+            thumbnailPath: 'demos/thumbnails/sequence.png',
+            videoPath: 'demos/videos/sequence.mp4',
             colors: {
                 dark: '#010a9e',
                 light: '#0040c9'
@@ -36,8 +32,8 @@ const Projects = () => {
             website: 'https://github.com/carloshernandez201/MutualFundInvestmentPredictor',
             date: 'Jan 2025 - June 2025',
             description: 'Developed backend services and RESTful APIs for a Mutual Fund Calculator, integrating Newton Analytics and FRED APIs to fetch beta values, historical S&P 500 returns, and risk-free rates.',
-            videoThumbnail: mutualfundThumbnail,
-            demoVideo: sequenceVideo,
+            thumbnailPath: 'demos/thumbnails/mutualfund.png',
+            videoPath: 'demos/videos/sequence.mp4',
             colors: {
                 dark: '#353535',
                 light: '#535353'
@@ -49,8 +45,8 @@ const Projects = () => {
             website: 'https://www.uscclimbing.org/',
             date: 'Jan 2025 - June 2025',
             description: 'Designed and developed the USC Climbing Club website from scratch using Figma, React.js, and Firebase.',
-            videoThumbnail: uscclimbingThumbnail,
-            demoVideo: sequenceVideo,
+            thumbnailPath: 'demos/thumbnails/usc_climbing.png',
+            videoPath: 'demos/videos/usc_climbing.mov',
             colors: {
                 dark: '#b88946',
                 light: '#c7a16b'
@@ -62,14 +58,72 @@ const Projects = () => {
             website: 'https://cookie-ai-ioy6.onrender.com/',
             date: 'Jan 2025 - June 2025',
             description: 'Full-stack web app built with MongoDB, Express, React, Node.js, and OpenAI API that breaks down lengthy assignment instructions into manageable and exportable subtasks',
-            videoThumbnail: cookieaiThumbnail,
-            demoVideo: sequenceVideo,
+            thumbnailPath: 'demos/thumbnails/cookieai.png',
+            videoPath: 'demos/videos/sequence.mp4',
             colors: {
                 dark: '#073e8c',
                 light: '#0b65e3'
             }
         }
     ];
+
+    // Function to get download URL from Firebase Storage
+    const getMediaUrl = async (path) => {
+        try {
+            const mediaRef = ref(storage, path);
+            const url = await getDownloadURL(mediaRef);
+            return url;
+        } catch (error) {
+            console.error('Error getting media URL:', error);
+            return null;
+        }
+    };
+
+    // Load all media URLs on component mount
+    useEffect(() => {
+        const loadAllMediaUrls = async () => {
+            const urlPromises = [];
+
+            // Create promises for all thumbnails and videos
+            projectsData.forEach(project => {
+                urlPromises.push(
+                    getMediaUrl(project.thumbnailPath).then(url => ({
+                        id: project.id,
+                        type: 'thumbnail',
+                        url
+                    }))
+                );
+                urlPromises.push(
+                    getMediaUrl(project.videoPath).then(url => ({
+                        id: project.id,
+                        type: 'video',
+                        url
+                    }))
+                );
+            });
+
+            try {
+                const results = await Promise.all(urlPromises);
+
+                // Organize URLs by project ID
+                const urls = {};
+                results.forEach(result => {
+                    if (!urls[result.id]) {
+                        urls[result.id] = {};
+                    }
+                    urls[result.id][result.type] = result.url;
+                });
+
+                setMediaUrls(urls);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error loading media URLs:', error);
+                setLoading(false);
+            }
+        };
+
+        loadAllMediaUrls();
+    }, []);
 
     const handleCardEnter = (projectId) => {
         setHoveredCard(projectId);
@@ -105,6 +159,17 @@ const Projects = () => {
             }, 50);
         }
     };
+
+    if (loading) {
+        return (
+            <div className="projects-section">
+                <h2 className="section-title">Projects</h2>
+                <div className="loading-container">
+                    <p>Loading projects...</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="projects-section">
@@ -146,11 +211,11 @@ const Projects = () => {
                                         muted
                                         loop
                                     >
-                                        <source src={project.demoVideo} type="video/mp4" />
+                                        <source src={mediaUrls[project.id]?.video} type="video/mp4" />
                                     </video>
                                 ) : (
                                     <img
-                                        src={project.videoThumbnail}
+                                        src={mediaUrls[project.id]?.thumbnail}
                                         alt={`${project.title} thumbnail`}
                                         className="project-thumbnail"
                                     />

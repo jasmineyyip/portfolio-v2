@@ -1,7 +1,10 @@
 @import '../../styles/colors.css';
 
 .work-experience {
-    margin: 0 30px 40px 30px;
+    padding: 40px 30px;
+    background: linear-gradient(to top,
+            var(--bg-secondary) 0%,
+            #16121e 100%);
 }
 
 .section-title {
@@ -64,7 +67,7 @@
 }
 
 .company-name {
-    color:  var(--text-primary);
+    color: var(--text-primary);
     font-size: 16px;
     font-weight: 600;
     margin: 0 0 4px 0;
