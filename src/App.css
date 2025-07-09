@@ -11,14 +11,14 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
   color: var(--border-focus);
   overflow: hidden;
 }
 
 .App {
   height: 100vh;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
 }
 
 .main-layout {

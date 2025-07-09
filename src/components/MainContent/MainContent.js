@@ -1,10 +1,11 @@
 import React from 'react';
+import Profile from '../Profile/Profile';
 import './MainContent.css';
 
 const MainContent = () => {
   return (
     <div className="right-section">
-      <p>Right Section (4/5 width)</p>
+      <Profile />
     </div>
   );
 };
