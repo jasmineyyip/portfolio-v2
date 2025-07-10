@@ -102,7 +102,7 @@ const Hobbies = () => {
     const scroll = (direction) => {
         const container = scrollContainerRef.current;
         if (container) {
-            const scrollAmount = 420; // card width + gap of two cards
+            const scrollAmount = 210; // card width + gap
             const newScrollPosition = direction === 'left'
                 ? container.scrollLeft - scrollAmount
                 : container.scrollLeft + scrollAmount;

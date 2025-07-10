@@ -1,7 +1,7 @@
 @import '../../styles/colors.css';
 
 .projects-section {
-    margin: 0 30px 40px 30px;
+    padding: 40px 30px;
 }
 
 .section-title {

@@ -5,40 +5,48 @@ import './Header.css';
 const Header = () => {
     const [isSearchFocused, setIsSearchFocused] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
+    const searchContainerRef = useRef(null);
 
     const handleSearchClick = () => {
         setIsSearchFocused(true);
         setShowDropdown(true);
     };
 
-    const handleSearchBlur = () => {
-        // Delay hiding dropdown to allow clicking on items
-        setTimeout(() => {
-            setIsSearchFocused(false);
-            setShowDropdown(false);
-        }, 200);
-    };
+    const handleDropdownClick = (sectionId) => {
+        console.log(`Navigate to ${sectionId}`);
 
-    const handleDropdownClick = (section) => {
-        console.log(`Navigate to ${section}`);
+        const container = document.querySelector('.main-content');
+        const target = document.getElementById(sectionId);
+
+        if (container && target) {
+            const targetOffsetTop = target.offsetTop;
+            const offset = 60; // tweak this as needed (e.g. header height + some margin)
+
+            container.scrollTo({
+                top: targetOffsetTop - offset,
+                behavior: 'smooth',
+            });
+        }
+
         setShowDropdown(false);
         setIsSearchFocused(false);
     };
 
-    // Hides the menu drop down when clicked away
-    useEffect(() => {
-        const handleClickOutside = () => {
-            if (showDropdown) {
-                setShowDropdown(false);
-                setIsSearchFocused(false);
-            }
-        };
 
+    // Hides the menu drop down when clicked away
+    const handleClickOutside = (e) => {
+        if (searchContainerRef.current && !searchContainerRef.current.contains(e.target)) {
+            setShowDropdown(false);
+            setIsSearchFocused(false);
+        }
+    };
+
+    useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [showDropdown]);
+    }, []);
 
     return (
         <header className="header">
@@ -74,7 +82,10 @@ const Header = () => {
                     </div>
                     <div
                         className="mobile-nav-item"
-                        onClick={() => handleDropdownClick('hobbies')}
+                        onClick={() => {
+                            console.log("Clicked Hobbies");
+                            handleDropdownClick('hobbies');
+                        }}
                     >
                         Hobbies
                     </div>
@@ -114,7 +125,6 @@ const Header = () => {
                                 className="search-input"
                                 placeholder="What do you want to know about me?"
                                 onFocus={handleSearchClick}
-                                onBlur={handleSearchBlur}
                                 readOnly
                             />
                         </div>

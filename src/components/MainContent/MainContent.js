@@ -10,10 +10,18 @@ const MainContent = () => {
   return (
     <div className="main-content">
       <Profile />
-      <AboutMe />
-      <WorkExperience />
-      <Projects />
-      <Hobbies />
+      <section id="about-me">
+        <AboutMe />
+      </section>
+      <section id="work-experience">
+        <WorkExperience />
+      </section>
+      <section id="projects">
+        <Projects />
+      </section>
+      <section id="hobbies">
+        <Hobbies />
+      </section>
     </div>
   );
 };

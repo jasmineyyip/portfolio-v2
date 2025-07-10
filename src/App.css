@@ -19,12 +19,13 @@ body {
 .App {
   height: 100vh;
   background-color: var(--bg-primary);
+  display: block;
 }
 
 .main-layout {
   flex: 1;
-  display: flex;
-  height: calc(100vh - 82px); /* subtract header height */
+  display: flex !important;
+  height: calc(100vh - 82px);
   margin: 72px 10px 10px 10px;
   gap: 10px;
   overflow: hidden;
