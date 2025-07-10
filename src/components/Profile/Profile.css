@@ -12,7 +12,7 @@
 
 .profile-content {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 50px;
     position: relative;
     z-index: 1;
@@ -33,6 +33,7 @@
 
 .profile-text {
     flex: 1;
+    align-items: end;
 }
 
 .profile-label {
@@ -41,21 +42,34 @@
     font-weight: 500;
 }
 
-.profile-subtext {
-    color: var(--text-muted);
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.2rem;
-}
-
 .profile-name {
     font-family: "Noto Sans", sans-serif;
     color: var(--text-primary);
-    font-size: 60px;
+    font-size: 70px;
     margin-bottom: 20px;
-    font-weight: 800;
+    font-weight: 900;
     line-height: 1.1;
     letter-spacing: -2px;
+}
+
+.profile-stats {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.stat-separator {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
 }
 
 /* Responsive adjustments */

@@ -1,0 +1,9 @@
+@import '../../styles/colors.css';
+
+.about-me {
+    padding: 40px 30px;
+    background: linear-gradient(to top,
+            var(--bg-secondary) 0%,
+            #16121e 100%);
+}
+
