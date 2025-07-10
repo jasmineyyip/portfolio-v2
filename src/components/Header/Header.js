@@ -99,7 +99,7 @@ const Header = () => {
 
                 {/* Center - Search Bar */}
                 <div className="header-search">
-                    <div className="search-container">
+                    <div className="search-container" ref={searchContainerRef}>
                         <div
                             className={`search-bar ${isSearchFocused ? 'focused' : ''}`}
                             onClick={handleSearchClick}
