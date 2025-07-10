@@ -208,6 +208,14 @@
     .play-pause-section {
         height: 44px;
     }
+
+    .project-card.hovered .project-media {
+        transform: none;
+    }
+    
+    .project-card.hovered .project-description {
+        transform: none;
+    }
 }
 
 @media (max-width: 480px) {
