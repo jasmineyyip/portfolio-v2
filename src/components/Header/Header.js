@@ -74,6 +74,12 @@ const Header = () => {
                     </div>
                     <div
                         className="mobile-nav-item"
+                        onClick={() => handleDropdownClick('hobbies')}
+                    >
+                        Hobbies
+                    </div>
+                    <div
+                        className="mobile-nav-item"
                         onClick={() => handleDropdownClick('contact')}
                     >
                         Contact
@@ -165,6 +171,23 @@ const Header = () => {
                                     <div className="dropdown-text">
                                         <span className="dropdown-title">Sidequests</span>
                                         <span className="dropdown-subtitle">Cool side projects I worked on</span>
+                                    </div>
+                                </div>
+                                <div
+                                    className="dropdown-item"
+                                    onClick={() => handleDropdownClick('hobbies')}
+                                >
+                                    <div className="dropdown-icon-container">
+                                        <svg className="dropdown-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M8 20h8c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            <path d="M12 12v-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                                            <path d="M12 10c0-1.5 1-3 2.5-4s3.5-1 3.5-1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            <path d="M15 7c.5-.5 1.5-1 2.5-1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </div>
+                                    <div className="dropdown-text">
+                                        <span className="dropdown-title">Hobbies</span>
+                                        <span className="dropdown-subtitle">Life outside of coding</span>
                                     </div>
                                 </div>
                                 <div
