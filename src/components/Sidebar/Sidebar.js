@@ -2,27 +2,7 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
 
-const Sidebar = () => {
-    const [activeSection, setActiveSection] = useState('about-me');
-
-    const handleSectionClick = (sectionId) => {
-        setActiveSection(sectionId);
-        console.log(`Navigate to ${sectionId}`);
-
-        const container = document.querySelector('.main-content');
-        const target = document.getElementById(sectionId);
-
-        if (container && target) {
-            const targetOffsetTop = target.offsetTop;
-            const offset = 60; // tweak this as needed (e.g. header height + some margin)
-
-            container.scrollTo({
-                top: targetOffsetTop - offset,
-                behavior: 'smooth',
-            });
-        }
-    };
-
+const Sidebar = ({ activeSection, onSectionClick }) => {
     const navigationItems = [
         {
             id: 'about-me',
@@ -102,7 +82,7 @@ const Sidebar = () => {
                     <div
                         key={item.id}
                         className={`sidebar-item ${activeSection === item.id ? 'active' : ''}`}
-                        onClick={() => handleSectionClick(item.id)}
+                        onClick={() => onSectionClick(item.id)}
                     >
                         <div className="sidebar-icon-container">
                             {item.icon}

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import logo from '../../assets/yip_logo.png';
 import './Header.css';
 
-const Header = () => {
+const Header = ({ activeSection, onSectionClick }) => {
     const [isSearchFocused, setIsSearchFocused] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
     const searchContainerRef = useRef(null);
@@ -13,21 +13,7 @@ const Header = () => {
     };
 
     const handleDropdownClick = (sectionId) => {
-        console.log(`Navigate to ${sectionId}`);
-
-        const container = document.querySelector('.main-content');
-        const target = document.getElementById(sectionId);
-
-        if (container && target) {
-            const targetOffsetTop = target.offsetTop;
-            const offset = 60; // tweak this as needed (e.g. header height + some margin)
-
-            container.scrollTo({
-                top: targetOffsetTop - offset,
-                behavior: 'smooth',
-            });
-        }
-
+        onSectionClick(sectionId);
         setShowDropdown(false);
         setIsSearchFocused(false);
     };
