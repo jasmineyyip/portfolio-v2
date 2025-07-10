@@ -1,14 +1,15 @@
 @import '../../styles/colors.css';
 
-.projects-section {
+.projects {
     padding: 40px 30px;
 }
 
-.section-title {
+.projects .section-title {
     color: var(--text-primary);
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 24px;
+    letter-spacing: -0.8px;
 }
 
 .projects-grid {
@@ -170,17 +171,38 @@
         gap: 16px;
     }
 
-    .project-content {
-        padding: 20px;
+    .project-title {
+        font-size: 20px;
+        margin-bottom: 4px;
     }
 
-    .project-title {
-        font-size: 18px;
+    .project-meta {
+        gap: 4px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .project-date,
+    .project-cta {
+        font-size: 13px;
+    }
+
+    .project-description {
+        font-size: 13px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+
+    .project-separator {
+        display: none;
     }
 
     .play-pause-button {
         width: 44px;
         height: 44px;
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0s;
     }
 
     .play-pause-section {
@@ -189,12 +211,24 @@
 }
 
 @media (max-width: 480px) {
+    .projects {
+        padding: 20px 20px;
+    }
+
+    .projects .section-title {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+    
     .project-content {
         padding: 16px;
     }
 
-    .project-title {
-        font-size: 16px;
+    .project-date,
+    .project-cta,
+    .project-description {
+        font-size: 12px;
+        line-height: 1.4;
     }
 
     .project-media {

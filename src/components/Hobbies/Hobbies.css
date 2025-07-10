@@ -10,7 +10,7 @@
     padding: 0 30px;
 }
 
-.section-title {
+.hobbies .section-title {
     color: var(--text-primary);
     font-size: 24px;
     font-weight: 700;
@@ -46,7 +46,7 @@
 }
 
 .hobby-card:hover {
-    background: var(--bg-focused);
+    background: var(--bg-light);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
 }
 
@@ -162,79 +162,36 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
-    .hobbies-section {
-        padding: 40px 0;
+@media (max-width: 480px) {
+    .hobbies {
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
     .hobbies-header {
         padding: 0 20px;
-        margin-bottom: 24px;
-    }
-
-    .hobbies-title {
-        font-size: 28px;
     }
 
     .hobbies-scroll-container {
-        padding: 0 20px;
-        gap: 16px;
+        padding: 0 10px;
     }
 
-    .hobby-card {
-        flex: 0 0 240px;
+    .hobbies .section-title {
+        font-size: 20px;
+        margin-bottom: 10px;
     }
 
     .hobby-card-image {
-        height: 160px;
-    }
-
-    .hobby-card-content {
-        padding: 16px;
+        width: 150px;
+        height: 150px;
     }
 
     .hobby-title {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .hobby-description {
-        font-size: 13px;
-    }
-
-    .nav-button {
-        width: 40px;
-        height: 40px;
-    }
-
-    .fade-overlay {
-        width: 60px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hobbies-header {
-        padding: 0 16px;
-    }
-
-    .hobbies-title {
-        font-size: 24px;
-    }
-
-    .hobbies-scroll-container {
-        padding: 0 16px;
-        gap: 12px;
-    }
-
-    .hobby-card {
-        flex: 0 0 200px;
-    }
-
-    .hobby-card-image {
-        height: 140px;
-    }
-
-    .hobby-card-content {
-        padding: 12px;
+        font-size: 12px;
     }
 
     .fade-overlay {

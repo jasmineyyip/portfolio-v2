@@ -15,7 +15,7 @@ const Hobbies = () => {
         {
             id: 1,
             title: "Rock Climbing",
-            description: "Las Vegas trip - bouldering by day, rolling dice by night",
+            description: "Vegas trip - bouldering by day, rolling dice by night",
             imagePath: "hobbies/climbing.png"
         },
         {
@@ -139,7 +139,7 @@ const Hobbies = () => {
 
     if (loading) {
         return (
-            <div className="hobbies-section">
+            <div className="hobbies">
                 <div className="hobbies-header">
                     <h2 className="section-title">Tracks of My Life</h2>
                 </div>

@@ -79,13 +79,6 @@ const WorkExperience = () => {
                                     <span className="date-range">{job.dateRange}</span>
                                 </div>
                             </div>
-                            {/* <div className="work-description">
-                                {job.description.map((point, index) => (
-                                    <p key={index} className="description-point">
-                                        {point}
-                                    </p>
-                                ))}
-                            </div> */}
                         </div>
                     </div>
                 ))}

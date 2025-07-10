@@ -83,23 +83,51 @@
     }
 
     .profile-photo {
-        width: 80px;
-        height: 80px;
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-label {
+        display: none;
     }
 
     .profile-name {
         font-size: 36px;
+        margin-bottom: 14px;
+        font-weight: 800;
+    }    
+
+    .stat-item {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--text-muted);
+    }
+
+    .stat-number {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-primary);
     }
 }
 
 @media (max-width: 480px) {
-    .profile-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
+    .profile-photo {
+        width: 100px;
+        height: 100px;
     }
 
     .profile-name {
-        font-size: 32px;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }   
+
+    .profile-stats {
+        gap: 2px;
+    }
+
+    .stat-separator {
+        font-size: 12px;
+        padding: 0 4px;
     }
 }

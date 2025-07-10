@@ -5,7 +5,7 @@
     background: var(--bg-secondary);
 }
 
-.section-title {
+.work-experience .section-title {
     color: var(--text-primary);
     font-size: 24px;
     font-weight: 700;
@@ -134,13 +134,36 @@
 }
 
 @media (max-width: 480px) {
+    .work-experience {
+        padding: 20px 20px;
+    }
+
+    .work-experience .section-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .work-header {
+        gap: 0;
+    }
+
     .work-item {
-        flex-direction: column;
-        gap: 12px;
+        padding-left: 0px;
+        padding-right: 0px;
+        gap: 16px;
     }
 
     .work-image {
         width: 48px;
         height: 48px;
+    }
+
+    .job-title,
+    .job-location {
+        font-size: 13px;
+    }
+
+    .date-range {
+        display: none;
     }
 }

@@ -7,7 +7,7 @@
             #16121e 100%);
 }
 
-.section-title {
+.about-me .section-title {
     color: var(--text-primary);
     font-size: 24px;
     font-weight: 700;
@@ -25,10 +25,6 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .about-me-section {
-        padding: 40px 20px;
-    }
-
     .about-me-content {
         gap: 20px;
     }
@@ -44,8 +40,13 @@
 }
 
 @media (max-width: 480px) {
-    .about-me-section {
-        padding: 30px 16px;
+    .about-me .section-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .about-me {
+        padding: 20px 20px;
     }
 
     .about-me-title {
@@ -53,7 +54,7 @@
     }
 
     .about-me-text {
-        font-size: 14px;
+        font-size: 13px;
         line-height: 1.5;
     }
 }

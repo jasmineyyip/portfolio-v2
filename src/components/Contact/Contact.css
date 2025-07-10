@@ -1,11 +1,11 @@
 @import '../../styles/colors.css';
 
-.contact-section {
+.contact {
     padding: 40px 30px;
     background: var(--bg-secondary);
 }
 
-.section-title {
+.contact .section-title {
     color: var(--text-primary);
     font-size: 24px;
     font-weight: 700;
@@ -17,7 +17,7 @@
     color: var(--text-muted);
     font-size: 15px;
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.4;
     margin-bottom: 20px;
 }
 
@@ -41,25 +41,28 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .contact-section {
-        padding: 40px 20px;
-    }
-
     .contact-text {
-        font-size: 15px;
+        font-size: 14px;
     }
 }
 
 @media (max-width: 480px) {
-    .contact-section {
-        padding: 30px 16px;
+    .contact {
+        padding: 20px 20px;
+    }
+
+    .contact .section-title {
+        font-size: 20px;
+        margin-bottom: 10px;
     }
 
     .contact-text {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .contact-links {
+        font-size: 13px;
+        gap: 12px;
         flex-direction: column;
     }
 }

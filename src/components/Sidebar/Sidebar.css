@@ -52,11 +52,11 @@
 }
 
 .sidebar-item:hover {
-    background-color: var(--border-primary);
+    background-color: var(--bg-light);
 }
 
 .sidebar-item.active {
-    background-color: var(--border-primary);
+    background-color: var(--bg-light);
 }
 
 .sidebar-item.active::before {

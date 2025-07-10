@@ -173,7 +173,7 @@ const Projects = () => {
 
     if (loading) {
         return (
-            <div className="projects-section">
+            <div className="projects">
                 <h2 className="section-title">Projects</h2>
                 <div className="loading-container">
                     <p>Loading projects...</p>
@@ -183,7 +183,7 @@ const Projects = () => {
     }
 
     return (
-        <div className="projects-section">
+        <div className="projects">
             <h2 className="section-title">Projects</h2>
             <div className="projects-grid">
                 {projectsData.map(project => (
@@ -259,6 +259,7 @@ const Projects = () => {
                                             icon={faPlay}
                                             size="xl"
                                             color={project.colors.dark}
+                                            style={{ paddingLeft: '2px' }}
                                         />
                                     )}
                                 </button>
