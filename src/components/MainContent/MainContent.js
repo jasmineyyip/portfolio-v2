@@ -4,6 +4,7 @@ import AboutMe from '../AboutMe/AboutMe'
 import WorkExperience from '../WorkExperience/WorkExperience';
 import Projects from '../Projects/Projects';
 import Hobbies from '../Hobbies/Hobbies';
+import Contact from '../Contact/Contact';
 import './MainContent.css';
 
 const MainContent = () => {
@@ -21,6 +22,9 @@ const MainContent = () => {
       </section>
       <section id="hobbies">
         <Hobbies />
+      </section>
+      <section id="contact">
+        <Contact />
       </section>
     </div>
   );

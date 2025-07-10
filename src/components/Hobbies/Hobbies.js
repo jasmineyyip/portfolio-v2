@@ -21,13 +21,13 @@ const Hobbies = () => {
         {
             id: 2,
             title: "Traveling",
-            description: "Caught the prettiest sunset from Xiangshan in Taipei.",
+            description: "Caught the prettiest sunset from Xiangshan in Taipei",
             imagePath: "hobbies/traveling.png"
         },
         {
             id: 3,
             title: "Hiking",
-            description: "Hiking at the Hollywood Sign Trail.",
+            description: "Hiking at the Hollywood Sign Trail",
             imagePath: "hobbies/hiking.png"
         },
         {
@@ -39,19 +39,19 @@ const Hobbies = () => {
         {
             id: 5,
             title: "Entrepreneurship",
-            description: "Demoing Sequence at LavaLab Demo Night.",
+            description: "Demoing Sequence at LavaLab Demo Night",
             imagePath: "hobbies/entrepreneurship.png"
         },
         {
             id: 6,
             title: "Drawing",
-            description: "Experimenting with blind contour drawing.",
+            description: "Experimenting with blind contour drawing",
             imagePath: "hobbies/drawing.png"
         },
         {
             id: 7,
             title: "Music & Concerts",
-            description: "My friend and I at Billie Eilish's concert.",
+            description: "My friend and I at Billie Eilish's concert",
             imagePath: "hobbies/music.png"
         }
     ];
