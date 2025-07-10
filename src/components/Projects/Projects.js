@@ -24,7 +24,8 @@ const Projects = () => {
             colors: {
                 dark: '#010a9e',
                 light: '#0040c9'
-            }
+            },
+            disabled: 'false',
         },
         {
             id: 2,
@@ -37,7 +38,8 @@ const Projects = () => {
             colors: {
                 dark: '#353535',
                 light: '#535353'
-            }
+            },
+            disabled: 'true',
         },
         {
             id: 3,
@@ -50,7 +52,8 @@ const Projects = () => {
             colors: {
                 dark: '#b88946',
                 light: '#c7a16b'
-            }
+            },
+            disabled: 'false',
         },
         {
             id: 4,
@@ -63,7 +66,8 @@ const Projects = () => {
             colors: {
                 dark: '#073e8c',
                 light: '#0b65e3'
-            }
+            },
+            disabled: 'true',
         }
     ];
 
@@ -135,6 +139,13 @@ const Projects = () => {
 
     const handlePlayPauseClick = (projectId, event) => {
         event.stopPropagation();
+        
+        // Find the project to check if it's disabled
+        const project = projectsData.find(p => p.id === projectId);
+        if (project && project.disabled === 'true') {
+            return; // Don't do anything if disabled
+        }
+        
         const isPlaying = playingVideos[projectId];
 
         if (isPlaying) {
@@ -191,7 +202,7 @@ const Projects = () => {
                                 <div className="project-meta">
                                     <span className="project-date">{project.date}</span>
                                     <span className="project-separator">•</span>
-                                    <a href={project.website} target='_blank' className="project-cta">Visit Website</a>
+                                    <a href={project.website} target='_blank' className="project-cta">View Project</a>
                                 </div>
                             </div>
 
@@ -230,6 +241,12 @@ const Projects = () => {
                                 <button
                                     className="play-pause-button"
                                     onClick={(e) => handlePlayPauseClick(project.id, e)}
+                                    style={{
+                                        ...(project.disabled === 'true' && {
+                                            cursor: 'not-allowed',
+                                            backgroundColor: 'rgba(255, 255, 255, 0.5)'
+                                        })
+                                    }}
                                 >
                                     {playingVideos[project.id] ? (
                                         <FontAwesomeIcon
@@ -242,7 +259,6 @@ const Projects = () => {
                                             icon={faPlay}
                                             size="xl"
                                             color={project.colors.dark}
-                                            style={{ paddingLeft: '2px' }}
                                         />
                                     )}
                                 </button>
