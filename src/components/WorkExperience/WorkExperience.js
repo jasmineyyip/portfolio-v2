@@ -1,88 +1,129 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './WorkExperience.css';
-import linkedinLogo from '../../assets/company/linkedin_logo.png';
-import uscLogo from '../../assets/company/usc_logo.jpeg';
-import goldmanLogo from '../../assets/company/goldman_sachs_logo.png';
-import seratoLogo from '../../assets/company/serato_logo.png';
-import saraLogo from '../../assets/company/sara_logo.png';
+import { storage } from '../../firebase/config';
+import { ref, getDownloadURL } from 'firebase/storage';
 
 const WorkExperience = () => {
+    const [logoUrls, setLogoUrls] = useState({});
+    const [loading, setLoading] = useState(true);
+
     const workData = [
         {
             id: 1,
-            companyLogo: linkedinLogo,
             companyName: 'LinkedIn',
             jobTitle: 'Software Engineer Intern',
             location: 'Mountain View, CA',
+            jobType: 'Internship',
             dateRange: 'May 2025 – August 2025',
-            description: []
+            logoPath: 'company_logos/linkedin.png'
         },
         {
             id: 2,
-            companyLogo: goldmanLogo,
             companyName: 'Goldman Sachs',
-            jobTitle: 'Emerging Leader Series - Engineering Scholar',
+            jobTitle: 'Emerging Leaders Series - Engineering Scholar',
             location: 'Dallas, TX',
-            dateRange: 'October 2024 – February 2025',
-            description: []
+            jobType: 'Apprenticeship',
+            dateRange: 'Oct 2024 – Feb 2025',
+            logoPath: 'company_logos/goldman_sachs.png'
         },
         {
             id: 3,
-            companyLogo: uscLogo,
             companyName: 'USC Spatial Sciences Institute',
-            jobTitle: 'Mobile App Developer & Researcher',
+            jobTitle: 'Mobile App Developer',
             location: 'Los Angeles, CA',
-            dateRange: 'September 2024 – April 2025',
-            description: []
+            jobType: 'Part-time',
+            dateRange: 'Sep 2024 – Apr 2025',
+            logoPath: 'company_logos/usc.jpeg'
         },
         {
             id: 4,
-            companyLogo: saraLogo,
             companyName: 'Sara',
             jobTitle: 'Software Engineer Intern',
             location: 'Los Angeles, CA',
-            dateRange: 'June 2024 – July 2024',
-            description: []
+            jobType: 'Internship',
+            dateRange: 'Jun 2024 – Jul 2024',
+            logoPath: 'company_logos/sara.png'
         },
         {
             id: 5,
-            companyLogo: seratoLogo,
             companyName: 'Serato',
             jobTitle: 'Software Engineer Intern',
             location: 'Auckland, NZ',
-            dateRange: 'December 2022 – February 2023',
-            description: []
+            jobType: 'Internship',
+            dateRange: 'Dec 2022 – Feb 2023',
+            logoPath: 'company_logos/serato.png'
+        },
+        {
+            id: 6,
+            companyName: 'Power Trip',
+            jobTitle: 'Software Engineer Intern',
+            location: 'Wellington, NZ',
+            jobType: 'Part time',
+            dateRange: 'May 2022 – Nov 2022',
+            logoPath: 'company_logos/power_trip.png'
         }
     ];
+
+    // Fetch logo URLs from Firebase
+    useEffect(() => {
+        const loadLogoUrls = async () => {
+            const promises = workData.map(async (job) => {
+                try {
+                    const logoRef = ref(storage, job.logoPath);
+                    const url = await getDownloadURL(logoRef);
+                    return { id: job.id, url };
+                } catch (error) {
+                    console.error(`Error loading logo for ${job.companyName}:`, error);
+                    return { id: job.id, url: null };
+                }
+            });
+
+            const results = await Promise.all(promises);
+            const urlsMap = {};
+            results.forEach(({ id, url }) => {
+                urlsMap[id] = url;
+            });
+
+            setLogoUrls(urlsMap);
+            setLoading(false);
+        };
+
+        loadLogoUrls();
+    }, []);
 
     return (
         <div className="work-experience">
             <h2 className="section-title">Work Experience</h2>
-            <div className="work-list">
-                {workData.map(job => (
-                    <div key={job.id} className="work-item">
-                        <div className="work-image">
+            <div className="work-table-header-wrapper">
+                <div className="work-table-header">
+                    <div className="col col-number">#</div>
+                    <div className="col col-title">Title</div>
+                    <div className="col col-location">Location</div>
+                    <div className="col col-jobtype">Job Type</div>
+                    <div className="col col-daterange">Date</div>
+                </div>
+            </div>
+            {workData.map((job, index) => (
+                <div key={job.id} className="work-table-row-wrapper">
+                    <div className="work-table-row">
+                        <div className="col col-number">{index + 1}</div>
+                        <div className="col col-title">
                             <img
-                                src={job.companyLogo}
+                                src={logoUrls[job.id]}
                                 alt={`${job.companyName} logo`}
-                                className="company-logo"
+                                className="table-logo"
                             />
-                        </div>
-                        <div className="work-content">
-                            <div className="work-header">
-                                <div className="work-main-info">
-                                    <h3 className="company-name">{job.companyName}</h3>
-                                    <p className="job-title">{job.jobTitle}</p>
-                                    <p className="job-location">{job.location}</p>
-                                </div>
-                                <div className="work-meta">
-                                    <span className="date-range">{job.dateRange}</span>
-                                </div>
+                            <div className="title-info">
+                                <div className="job-title">{job.jobTitle}</div>
+                                <div className="company-name">{job.companyName}</div>
                             </div>
                         </div>
+                        <div className="col col-location">{job.location}</div>
+                        <div className="col col-jobtype">{job.jobType}</div>
+                        <div className="col col-daterange">{job.dateRange}</div>
                     </div>
-                ))}
-            </div>
+                </div>
+            ))}
         </div>
     );
 };

@@ -180,16 +180,12 @@
 }
 
 .sidebar-action-item:hover {
-    background-color: var(--border-primary);
+    background-color: var(--bg-light);
     text-decoration: none;
 }
 
 .sidebar-action-item .sidebar-icon-container {
     background-color: var(--bg-surface);
-}
-
-.sidebar-action-item:hover .sidebar-icon-container {
-    background-color: var(--text-primary);
 }
 
 .sidebar-action-item:hover .sidebar-icon-container svg {
