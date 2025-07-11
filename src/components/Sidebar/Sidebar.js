@@ -1,5 +1,5 @@
 // Sidebar.js
-import React, { useState } from 'react';
+import React from 'react';
 import './Sidebar.css';
 
 const Sidebar = ({ activeSection, onSectionClick }) => {

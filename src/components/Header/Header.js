@@ -49,34 +49,31 @@ const Header = ({ activeSection, onSectionClick }) => {
                 {/* Mobile Navigation - only visible on mobile */}
                 <div className="mobile-nav">
                     <div
-                        className="mobile-nav-item"
+                        className={`mobile-nav-item ${activeSection === 'about-me' ? 'active' : ''}`}
                         onClick={() => handleDropdownClick('about-me')}
                     >
                         About Me
                     </div>
                     <div
-                        className="mobile-nav-item"
+                        className={`mobile-nav-item ${activeSection === 'work-experience' ? 'active' : ''}`}
                         onClick={() => handleDropdownClick('work-experience')}
                     >
                         Work Experience
                     </div>
                     <div
-                        className="mobile-nav-item"
+                        className={`mobile-nav-item ${activeSection === 'projects' ? 'active' : ''}`}
                         onClick={() => handleDropdownClick('projects')}
                     >
                         Sidequests
                     </div>
                     <div
-                        className="mobile-nav-item"
-                        onClick={() => {
-                            console.log("Clicked Hobbies");
-                            handleDropdownClick('hobbies');
-                        }}
+                        className={`mobile-nav-item ${activeSection === 'hobbies' ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick('hobbies')}
                     >
                         Hobbies
                     </div>
                     <div
-                        className="mobile-nav-item"
+                        className={`mobile-nav-item ${activeSection === 'contact' ? 'active' : ''}`}
                         onClick={() => handleDropdownClick('contact')}
                     >
                         Contact

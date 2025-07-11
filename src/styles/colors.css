@@ -6,10 +6,12 @@
     --bg-surface: #282828;       /* Cards, dropdowns, surfaces */
     --bg-focused: #1a1a1a;
     --bg-light: #1f1f1f;
+    --bg-white: #fdfdfd;
     
     /* Text Colors */
     --text-primary: #fdfdfd;     /* Primary off-white text */
     --text-muted: #a7a7a7;       /* Muted grey text */
+    --text-dark: #000000;
     
     /* Border Colors */
     --border-primary: #363636;   /* Default borders */

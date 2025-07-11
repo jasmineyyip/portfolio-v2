@@ -344,7 +344,8 @@
 
     .mobile-nav-item:hover,
     .mobile-nav-item.active {
-        color: var(--text-primary);
+        background-color: var(--bg-white);
+        color: var(--text-dark);
     }
 }
 
