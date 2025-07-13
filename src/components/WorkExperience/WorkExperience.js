@@ -58,7 +58,7 @@ const WorkExperience = () => {
             companyName: 'Power Trip',
             jobTitle: 'Software Engineer Intern',
             location: 'Wellington, NZ',
-            jobType: 'Part time',
+            jobType: 'Part-time',
             dateRange: 'May 2022 – Nov 2022',
             logoPath: 'company_logos/power_trip.png'
         }
