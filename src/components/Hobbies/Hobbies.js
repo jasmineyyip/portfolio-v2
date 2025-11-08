@@ -27,8 +27,8 @@ const Hobbies = () => {
         {
             id: 3,
             title: "Hiking",
-            description: "Hiking at the Hollywood Sign Trail",
-            imagePath: "hobbies/hiking.png"
+            description: "Hiking up Mt. Whiney with SC Outfitters",
+            imagePath: "hobbies/hiking.JPG"
         },
         {
             id: 4,
@@ -38,18 +38,24 @@ const Hobbies = () => {
         },
         {
             id: 5,
+            title: "Foodie",
+            description: "Had the best Taro Balls in JiuFen (九份)",
+            imagePath: "hobbies/foodie.png"
+        },
+        {
+            id: 6,
             title: "Entrepreneurship",
             description: "Demoing Sequence at LavaLab Demo Night",
             imagePath: "hobbies/entrepreneurship.png"
         },
         {
-            id: 6,
+            id: 7,
             title: "Drawing",
-            description: "Experimenting with blind contour drawing",
+            description: "Experimenting with blind contour",
             imagePath: "hobbies/drawing.png"
         },
         {
-            id: 7,
+            id: 8,
             title: "Music & Concerts",
             description: "My friend and I at Billie Eilish's concert",
             imagePath: "hobbies/music.png"

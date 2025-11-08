@@ -12,13 +12,22 @@ const WorkExperience = () => {
             id: 1,
             companyName: 'LinkedIn',
             jobTitle: 'Software Engineer Intern',
+            location: 'New York, NY',
+            jobType: 'Internship',
+            dateRange: 'May 2026 – August 2026',
+            logoPath: 'company_logos/linkedin.png'
+        },
+        {
+            id: 2,
+            companyName: 'LinkedIn',
+            jobTitle: 'Software Engineer Intern',
             location: 'Mountain View, CA',
             jobType: 'Internship',
             dateRange: 'May 2025 – August 2025',
             logoPath: 'company_logos/linkedin.png'
         },
         {
-            id: 2,
+            id: 3,
             companyName: 'Goldman Sachs',
             jobTitle: 'Emerging Leaders Series - Engineering Scholar',
             location: 'Dallas, TX',
@@ -27,7 +36,7 @@ const WorkExperience = () => {
             logoPath: 'company_logos/goldman_sachs.png'
         },
         {
-            id: 3,
+            id: 4,
             companyName: 'USC Spatial Sciences Institute',
             jobTitle: 'Mobile App Developer',
             location: 'Los Angeles, CA',
@@ -36,7 +45,7 @@ const WorkExperience = () => {
             logoPath: 'company_logos/usc.jpeg'
         },
         {
-            id: 4,
+            id: 5,
             companyName: 'Sara',
             jobTitle: 'Software Engineer Intern',
             location: 'Los Angeles, CA',
@@ -45,7 +54,7 @@ const WorkExperience = () => {
             logoPath: 'company_logos/sara.png'
         },
         {
-            id: 5,
+            id: 6,
             companyName: 'Serato',
             jobTitle: 'Software Engineer Intern',
             location: 'Auckland, NZ',
@@ -54,7 +63,7 @@ const WorkExperience = () => {
             logoPath: 'company_logos/serato.png'
         },
         {
-            id: 6,
+            id: 7,
             companyName: 'Power Trip',
             jobTitle: 'Software Engineer Intern',
             location: 'Wellington, NZ',
