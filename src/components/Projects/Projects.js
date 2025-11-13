@@ -3,6 +3,7 @@ import './Projects.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 import { storage } from '../../firebase/config';
+import { ref, getDownloadURL } from "firebase/storage";
 
 const projectsData = [
     {
