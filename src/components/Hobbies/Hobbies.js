@@ -15,7 +15,7 @@ const Hobbies = () => {
         {
             id: 1,
             title: "Rock Climbing",
-            description: "Vegas trip - bouldering by day, rolling dice by night",
+            description: "Vegas trip where we boulder by day, roll dice by night",
             imagePath: "hobbies/climbing.png"
         },
         {
@@ -27,7 +27,7 @@ const Hobbies = () => {
         {
             id: 3,
             title: "Hiking",
-            description: "Hiking up Mt. Whiney with SC Outfitters",
+            description: "Hiking up Mt. Whitney with SC Outfitters",
             imagePath: "hobbies/hiking.JPG"
         },
         {
@@ -39,7 +39,7 @@ const Hobbies = () => {
         {
             id: 5,
             title: "Foodie",
-            description: "Had the best Taro Balls in JiuFen (九份)",
+            description: "Had the best Taro Balls in JiuFen (九份), Taiwan",
             imagePath: "hobbies/foodie.png"
         },
         {
@@ -74,21 +74,16 @@ const Hobbies = () => {
         }
     };
 
-    // Load all image URLs on component mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         const loadAllImageUrls = async () => {
             const urlPromises = hobbies.map(async (hobby) => {
                 const url = await getImageUrl(hobby.imagePath);
-                return {
-                    id: hobby.id,
-                    url
-                };
+                return { id: hobby.id, url };
             });
 
             try {
                 const results = await Promise.all(urlPromises);
-
-                // Organize URLs by hobby ID
                 const urls = {};
                 results.forEach(result => {
                     urls[result.id] = result.url;

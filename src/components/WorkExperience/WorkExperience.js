@@ -3,75 +3,65 @@ import './WorkExperience.css';
 import { storage } from '../../firebase/config';
 import { ref, getDownloadURL } from 'firebase/storage';
 
+const workData = [
+    {
+        id: 1,
+        companyName: 'LinkedIn',
+        jobTitle: 'Software Engineer Intern',
+        location: 'Mountain View, CA',
+        jobType: 'Internship',
+        dateRange: 'May 2025 – August 2025',
+        logoPath: 'company_logos/linkedin.png'
+    },
+    {
+        id: 2,
+        companyName: 'Goldman Sachs',
+        jobTitle: 'Emerging Leaders Series - Engineering Scholar',
+        location: 'Dallas, TX',
+        jobType: 'Apprenticeship',
+        dateRange: 'Oct 2024 – Feb 2025',
+        logoPath: 'company_logos/goldman_sachs.png'
+    },
+    {
+        id: 3,
+        companyName: 'USC Spatial Sciences Institute',
+        jobTitle: 'Mobile App Developer',
+        location: 'Los Angeles, CA',
+        jobType: 'Part-time',
+        dateRange: 'Sep 2024 – Apr 2025',
+        logoPath: 'company_logos/usc.jpeg'
+    },
+    {
+        id: 4,
+        companyName: 'Sara',
+        jobTitle: 'Software Engineer Intern',
+        location: 'Los Angeles, CA',
+        jobType: 'Internship',
+        dateRange: 'Jun 2024 – Jul 2024',
+        logoPath: 'company_logos/sara.png'
+    },
+    {
+        id: 5,
+        companyName: 'Serato',
+        jobTitle: 'Software Engineer Intern',
+        location: 'Auckland, NZ',
+        jobType: 'Internship',
+        dateRange: 'Dec 2022 – Feb 2023',
+        logoPath: 'company_logos/serato.png'
+    },
+    {
+        id: 6,
+        companyName: 'Power Trip',
+        jobTitle: 'Software Engineer Intern',
+        location: 'Wellington, NZ',
+        jobType: 'Part-time',
+        dateRange: 'May 2022 – Nov 2022',
+        logoPath: 'company_logos/power_trip.png'
+    }
+];
+
 const WorkExperience = () => {
     const [logoUrls, setLogoUrls] = useState({});
-    const [loading, setLoading] = useState(true);
-
-    const workData = [
-        {
-            id: 1,
-            companyName: 'LinkedIn',
-            jobTitle: 'Software Engineer Intern',
-            location: 'New York, NY',
-            jobType: 'Internship',
-            dateRange: 'May 2026 – August 2026',
-            logoPath: 'company_logos/linkedin.png'
-        },
-        {
-            id: 2,
-            companyName: 'LinkedIn',
-            jobTitle: 'Software Engineer Intern',
-            location: 'Mountain View, CA',
-            jobType: 'Internship',
-            dateRange: 'May 2025 – August 2025',
-            logoPath: 'company_logos/linkedin.png'
-        },
-        {
-            id: 3,
-            companyName: 'Goldman Sachs',
-            jobTitle: 'Emerging Leaders Series - Engineering Scholar',
-            location: 'Dallas, TX',
-            jobType: 'Apprenticeship',
-            dateRange: 'Oct 2024 – Feb 2025',
-            logoPath: 'company_logos/goldman_sachs.png'
-        },
-        {
-            id: 4,
-            companyName: 'USC Spatial Sciences Institute',
-            jobTitle: 'Mobile App Developer',
-            location: 'Los Angeles, CA',
-            jobType: 'Part-time',
-            dateRange: 'Sep 2024 – Apr 2025',
-            logoPath: 'company_logos/usc.jpeg'
-        },
-        {
-            id: 5,
-            companyName: 'Sara',
-            jobTitle: 'Software Engineer Intern',
-            location: 'Los Angeles, CA',
-            jobType: 'Internship',
-            dateRange: 'Jun 2024 – Jul 2024',
-            logoPath: 'company_logos/sara.png'
-        },
-        {
-            id: 6,
-            companyName: 'Serato',
-            jobTitle: 'Software Engineer Intern',
-            location: 'Auckland, NZ',
-            jobType: 'Internship',
-            dateRange: 'Dec 2022 – Feb 2023',
-            logoPath: 'company_logos/serato.png'
-        },
-        {
-            id: 7,
-            companyName: 'Power Trip',
-            jobTitle: 'Software Engineer Intern',
-            location: 'Wellington, NZ',
-            jobType: 'Part-time',
-            dateRange: 'May 2022 – Nov 2022',
-            logoPath: 'company_logos/power_trip.png'
-        }
-    ];
 
     // Fetch logo URLs from Firebase
     useEffect(() => {
@@ -94,7 +84,6 @@ const WorkExperience = () => {
             });
 
             setLogoUrls(urlsMap);
-            setLoading(false);
         };
 
         loadLogoUrls();
