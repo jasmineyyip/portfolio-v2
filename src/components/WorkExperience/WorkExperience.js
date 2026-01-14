@@ -6,6 +6,15 @@ import { ref, getDownloadURL } from 'firebase/storage';
 const workData = [
     {
         id: 1,
+        companyName: 'Tessera Labs',
+        jobTitle: 'Software Engineer Intern',
+        location: 'San Jose, CA',
+        jobType: 'Internship',
+        dateRange: 'Jan 2026 – April 2026',
+        logoPath: 'company_logos/tessera_labs.jpeg'
+    },
+    {
+        id: 2,
         companyName: 'LinkedIn',
         jobTitle: 'Software Engineer Intern',
         location: 'Mountain View, CA',
@@ -14,7 +23,7 @@ const workData = [
         logoPath: 'company_logos/linkedin.png'
     },
     {
-        id: 2,
+        id: 3,
         companyName: 'Goldman Sachs',
         jobTitle: 'Emerging Leaders Series - Engineering Scholar',
         location: 'Dallas, TX',
@@ -23,7 +32,7 @@ const workData = [
         logoPath: 'company_logos/goldman_sachs.png'
     },
     {
-        id: 3,
+        id: 4,
         companyName: 'USC Spatial Sciences Institute',
         jobTitle: 'Mobile App Developer',
         location: 'Los Angeles, CA',
@@ -32,7 +41,7 @@ const workData = [
         logoPath: 'company_logos/usc.jpeg'
     },
     {
-        id: 4,
+        id: 5,
         companyName: 'Sara',
         jobTitle: 'Software Engineer Intern',
         location: 'Los Angeles, CA',
@@ -41,7 +50,7 @@ const workData = [
         logoPath: 'company_logos/sara.png'
     },
     {
-        id: 5,
+        id: 6,
         companyName: 'Serato',
         jobTitle: 'Software Engineer Intern',
         location: 'Auckland, NZ',
@@ -50,7 +59,7 @@ const workData = [
         logoPath: 'company_logos/serato.png'
     },
     {
-        id: 6,
+        id: 7,
         companyName: 'Power Trip',
         jobTitle: 'Software Engineer Intern',
         location: 'Wellington, NZ',
