@@ -1,17 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './Hobbies.css';
 import { storage } from '../../firebase/config';
 import { ref, getDownloadURL } from 'firebase/storage';
 
-const Hobbies = () => {
-    const [showControls, setShowControls] = useState(false);
-    const [scrollPosition, setScrollPosition] = useState(0);
-    const [maxScroll, setMaxScroll] = useState(0);
-    const [imageUrls, setImageUrls] = useState({});
-    const [loading, setLoading] = useState(true);
-    const scrollContainerRef = useRef(null);
-
-    const hobbies = [
+const hobbies = [
         {
             id: 1,
             title: "Rock Climbing",
@@ -61,6 +53,14 @@ const Hobbies = () => {
             imagePath: "hobbies/music.png"
         }
     ];
+
+const Hobbies = () => {
+    const [showControls, setShowControls] = useState(false);
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const [maxScroll, setMaxScroll] = useState(0);
+    const [imageUrls, setImageUrls] = useState({});
+    const [loading, setLoading] = useState(true);
+    const scrollContainerRef = useRef(null);
 
     // Function to get download URL from Firebase Storage
     const getImageUrl = async (path) => {
