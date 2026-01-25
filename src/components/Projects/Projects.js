@@ -68,10 +68,11 @@ const Projects = () => {
     const [hoveredCard, setHoveredCard] = useState(null);
     const [playingVideos, setPlayingVideos] = useState({});
     const [mediaUrls, setMediaUrls] = useState({});
-    const [loading, setLoading] = useState(true);
+    const [loadedThumbnails, setLoadedThumbnails] = useState({});
+    const [preloadedVideos, setPreloadedVideos] = useState({});
     const videoRefs = useRef({});
+    const preloadVideoRefs = useRef({});
 
-    // Function to get download URL from Firebase Storage
     const getMediaUrl = async (path) => {
         try {
             const mediaRef = ref(storage, path);
@@ -83,12 +84,10 @@ const Projects = () => {
         }
     };
 
-    // Load all media URLs on component mount
     useEffect(() => {
         const loadAllMediaUrls = async () => {
             const urlPromises = [];
 
-            // Create promises for all thumbnails and videos
             projectsData.forEach(project => {
                 urlPromises.push(
                     getMediaUrl(project.thumbnailPath).then(url => ({
@@ -108,8 +107,6 @@ const Projects = () => {
 
             try {
                 const results = await Promise.all(urlPromises);
-
-                // Organize URLs by project ID
                 const urls = {};
                 results.forEach(result => {
                     if (!urls[result.id]) {
@@ -117,20 +114,32 @@ const Projects = () => {
                     }
                     urls[result.id][result.type] = result.url;
                 });
-
                 setMediaUrls(urls);
-                setLoading(false);
             } catch (error) {
                 console.error('Error loading media URLs:', error);
-                setLoading(false);
             }
         };
 
         loadAllMediaUrls();
     }, []);
 
+    const handleThumbnailLoad = (projectId) => {
+        setLoadedThumbnails(prev => ({ ...prev, [projectId]: true }));
+    };
+
     const handleCardEnter = (projectId) => {
         setHoveredCard(projectId);
+        
+        // Preload video on hover (if not disabled and not already preloaded)
+        const project = projectsData.find(p => p.id === projectId);
+        if (project && project.disabled !== 'true' && !preloadedVideos[projectId] && mediaUrls[projectId] && mediaUrls[projectId].video) {
+            const video = preloadVideoRefs.current[projectId];
+            if (video) {
+                video.src = mediaUrls[projectId].video;
+                video.load();
+                setPreloadedVideos(prev => ({ ...prev, [projectId]: true }));
+            }
+        }
     };
 
     const handleCardLeave = (projectId) => {
@@ -140,26 +149,22 @@ const Projects = () => {
     const handlePlayPauseClick = (projectId, event) => {
         event.stopPropagation();
         
-        // Find the project to check if it's disabled
         const project = projectsData.find(p => p.id === projectId);
         if (project && project.disabled === 'true') {
-            return; // Don't do anything if disabled
+            return;
         }
         
         const isPlaying = playingVideos[projectId];
 
         if (isPlaying) {
-            // Pause the video
             const video = videoRefs.current[projectId];
             if (video) {
                 video.pause();
             }
             setPlayingVideos(prev => ({ ...prev, [projectId]: false }));
         } else {
-            // Start playing - first set the state, then play when video is ready
             setPlayingVideos(prev => ({ ...prev, [projectId]: true }));
 
-            // Use setTimeout to ensure video element is rendered before trying to play
             setTimeout(() => {
                 const video = videoRefs.current[projectId];
                 if (video) {
@@ -170,17 +175,6 @@ const Projects = () => {
             }, 50);
         }
     };
-
-    if (loading) {
-        return (
-            <div className="projects">
-                <h2 className="section-title">Projects</h2>
-                <div className="loading-container">
-                    <p>Loading projects...</p>
-                </div>
-            </div>
-        );
-    }
 
     return (
         <div className="projects">
@@ -214,11 +208,23 @@ const Projects = () => {
                             </div>
 
                             <div className="project-media">
+                                {/* Skeleton loader */}
+                                {!loadedThumbnails[project.id] && !playingVideos[project.id] && (
+                                    <div className="project-media-skeleton" />
+                                )}
+                                
+                                {/* Hidden preload video - loads on hover */}
+                                <video
+                                    ref={el => { preloadVideoRefs.current[project.id] = el; }}
+                                    preload="auto"
+                                    muted
+                                    style={{ display: 'none' }}
+                                />
+
                                 {playingVideos[project.id] ? (
                                     <video
                                         ref={el => {
                                             videoRefs.current[project.id] = el;
-                                            // Auto-play when video element is first created
                                             if (el && playingVideos[project.id]) {
                                                 el.play().catch(error => {
                                                     console.error('Error auto-playing video:', error);
@@ -228,14 +234,14 @@ const Projects = () => {
                                         className="project-video"
                                         muted
                                         loop
-                                    >
-                                        <source src={mediaUrls[project.id]?.video} type="video/mp4" />
-                                    </video>
+                                        src={mediaUrls[project.id]?.video}
+                                    />
                                 ) : (
                                     <img
                                         src={mediaUrls[project.id]?.thumbnail}
                                         alt={`${project.title} thumbnail`}
-                                        className="project-thumbnail"
+                                        className={`project-thumbnail ${loadedThumbnails[project.id] ? 'loaded' : 'loading'}`}
+                                        onLoad={() => handleThumbnailLoad(project.id)}
                                     />
                                 )}
                             </div>
