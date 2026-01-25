@@ -1,16 +1,20 @@
-import React from 'react';
+import { useState } from 'react';
 import profilePic from '../../assets/profile-picture.png';
 import './Profile.css';
 
 const Profile = () => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
     return (
         <div className="profile-section">
             <div className="profile-content">
                 <div className="profile-image">
+                    {!imageLoaded && <div className="profile-skeleton" />}
                     <img
                         src={profilePic}
                         alt="Jasmine Yip"
-                        className="profile-photo"
+                        className={`profile-photo ${imageLoaded ? 'loaded' : 'loading'}`}
+                        onLoad={() => setImageLoaded(true)}
                     />
                 </div>
                 <div className="profile-text">
