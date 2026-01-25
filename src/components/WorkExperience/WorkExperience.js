@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './WorkExperience.css';
 import { storage } from '../../firebase/config';
 import { ref, getDownloadURL } from 'firebase/storage';
@@ -71,6 +71,7 @@ const workData = [
 
 const WorkExperience = () => {
     const [logoUrls, setLogoUrls] = useState({});
+    const [loadedImages, setLoadedImages] = useState({});
 
     // Fetch logo URLs from Firebase
     useEffect(() => {
@@ -98,6 +99,10 @@ const WorkExperience = () => {
         loadLogoUrls();
     }, []);
 
+    const handleImageLoad = (id) => {
+        setLoadedImages(prev => ({ ...prev, [id]: true }));
+    };
+
     return (
         <div className="work-experience">
             <h2 className="section-title">Work Experience</h2>
@@ -115,11 +120,18 @@ const WorkExperience = () => {
                     <div className="work-table-row">
                         <div className="col col-number">{index + 1}</div>
                         <div className="col col-title">
-                            <img
-                                src={logoUrls[job.id]}
-                                alt={`${job.companyName} logo`}
-                                className="table-logo"
-                            />
+                            <div className="logo-container">
+                                {!loadedImages[job.id] && (
+                                    <div className="logo-skeleton" />
+                                )}
+                                <img
+                                    src={logoUrls[job.id]}
+                                    alt={`${job.companyName} logo`}
+                                    className={`table-logo ${loadedImages[job.id] ? 'loaded' : 'loading'}`}
+                                    onLoad={() => handleImageLoad(job.id)}
+                                    loading="lazy"
+                                />
+                            </div>
                             <div className="title-info">
                                 <div className="job-title">{job.jobTitle}</div>
                                 <div className="company-name">{job.companyName}</div>
