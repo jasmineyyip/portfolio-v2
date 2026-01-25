@@ -4,65 +4,64 @@ import { storage } from '../../firebase/config';
 import { ref, getDownloadURL } from 'firebase/storage';
 
 const hobbies = [
-        {
-            id: 1,
-            title: "Rock Climbing",
-            description: "Vegas trip where we boulder by day, roll dice by night",
-            imagePath: "hobbies/climbing.png"
-        },
-        {
-            id: 2,
-            title: "Traveling",
-            description: "Caught the prettiest sunset from Xiangshan in Taipei",
-            imagePath: "hobbies/traveling.png"
-        },
-        {
-            id: 3,
-            title: "Hiking",
-            description: "Hiking up Mt. Whitney with SC Outfitters",
-            imagePath: "hobbies/hiking.JPG"
-        },
-        {
-            id: 4,
-            title: "Running",
-            description: "Ran my first half marathon in La Jolla, San Diego",
-            imagePath: "hobbies/running.png"
-        },
-        {
-            id: 5,
-            title: "Foodie",
-            description: "Had the best Taro Balls in JiuFen (九份), Taiwan",
-            imagePath: "hobbies/foodie.png"
-        },
-        {
-            id: 6,
-            title: "Entrepreneurship",
-            description: "Demoing Sequence at LavaLab Demo Night",
-            imagePath: "hobbies/entrepreneurship.png"
-        },
-        {
-            id: 7,
-            title: "Drawing",
-            description: "Experimenting with blind contour",
-            imagePath: "hobbies/drawing.png"
-        },
-        {
-            id: 8,
-            title: "Music & Concerts",
-            description: "My friend and I at Billie Eilish's concert",
-            imagePath: "hobbies/music.png"
-        }
-    ];
+    {
+        id: 1,
+        title: "Rock Climbing",
+        description: "Vegas trip where we boulder by day, roll dice by night",
+        imagePath: "hobbies/climbing.png"
+    },
+    {
+        id: 2,
+        title: "Traveling",
+        description: "Caught the prettiest sunset from Xiangshan in Taipei",
+        imagePath: "hobbies/traveling.png"
+    },
+    {
+        id: 3,
+        title: "Hiking",
+        description: "Hiking up Mt. Whitney with SC Outfitters",
+        imagePath: "hobbies/hiking.JPG"
+    },
+    {
+        id: 4,
+        title: "Running",
+        description: "Ran my first half marathon in La Jolla, San Diego",
+        imagePath: "hobbies/running.png"
+    },
+    {
+        id: 5,
+        title: "Foodie",
+        description: "Had the best Taro Balls in JiuFen (九份), Taiwan",
+        imagePath: "hobbies/foodie.png"
+    },
+    {
+        id: 6,
+        title: "Entrepreneurship",
+        description: "Demoing Sequence at LavaLab Demo Night",
+        imagePath: "hobbies/entrepreneurship.png"
+    },
+    {
+        id: 7,
+        title: "Drawing",
+        description: "Experimenting with blind contour",
+        imagePath: "hobbies/drawing.png"
+    },
+    {
+        id: 8,
+        title: "Music & Concerts",
+        description: "My friend and I at Billie Eilish's concert",
+        imagePath: "hobbies/music.png"
+    }
+];
 
 const Hobbies = () => {
     const [showControls, setShowControls] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [maxScroll, setMaxScroll] = useState(0);
     const [imageUrls, setImageUrls] = useState({});
-    const [loading, setLoading] = useState(true);
+    const [loadedImages, setLoadedImages] = useState({});
     const scrollContainerRef = useRef(null);
 
-    // Function to get download URL from Firebase Storage
     const getImageUrl = async (path) => {
         try {
             const imageRef = ref(storage, path);
@@ -74,7 +73,6 @@ const Hobbies = () => {
         }
     };
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         const loadAllImageUrls = async () => {
             const urlPromises = hobbies.map(async (hobby) => {
@@ -88,22 +86,23 @@ const Hobbies = () => {
                 results.forEach(result => {
                     urls[result.id] = result.url;
                 });
-
                 setImageUrls(urls);
-                setLoading(false);
             } catch (error) {
                 console.error('Error loading image URLs:', error);
-                setLoading(false);
             }
         };
 
         loadAllImageUrls();
     }, []);
 
+    const handleImageLoad = (id) => {
+        setLoadedImages(prev => ({ ...prev, [id]: true }));
+    };
+
     const scroll = (direction) => {
         const container = scrollContainerRef.current;
         if (container) {
-            const scrollAmount = 210; // card width + gap
+            const scrollAmount = 210;
             const newScrollPosition = direction === 'left'
                 ? container.scrollLeft - scrollAmount
                 : container.scrollLeft + scrollAmount;
@@ -126,30 +125,13 @@ const Hobbies = () => {
     useEffect(() => {
         const container = scrollContainerRef.current;
         if (container) {
-            // Set initial max scroll
             setMaxScroll(container.scrollWidth - container.clientWidth);
-
-            // Add scroll listener
             container.addEventListener('scroll', handleScroll);
-
             return () => {
                 container.removeEventListener('scroll', handleScroll);
             };
         }
     }, []);
-
-    if (loading) {
-        return (
-            <div className="hobbies">
-                <div className="hobbies-header">
-                    <h2 className="section-title">Tracks of My Life</h2>
-                </div>
-                <div className="loading-container">
-                    <p>Loading hobbies...</p>
-                </div>
-            </div>
-        );
-    }
 
     return (
         <div className="hobbies">
@@ -169,10 +151,14 @@ const Hobbies = () => {
                     {hobbies.map((hobby) => (
                         <div key={hobby.id} className="hobby-card">
                             <div className="hobby-card-image">
+                                {!loadedImages[hobby.id] && (
+                                    <div className="hobby-image-skeleton" />
+                                )}
                                 <img
                                     src={imageUrls[hobby.id]}
                                     alt={hobby.title}
-                                    className="hobby-image"
+                                    className={`hobby-image ${loadedImages[hobby.id] ? 'loaded' : 'loading'}`}
+                                    onLoad={() => handleImageLoad(hobby.id)}
                                 />
                             </div>
                             <div className="hobby-card-content">
@@ -183,7 +169,6 @@ const Hobbies = () => {
                     ))}
                 </div>
 
-                {/* Navigation buttons */}
                 <button
                     className={`nav-button nav-button-left ${showControls ? 'visible' : ''}`}
                     onClick={() => scroll('left')}
@@ -204,7 +189,6 @@ const Hobbies = () => {
                     </svg>
                 </button>
 
-                {/* Fade overlays */}
                 <div className={`fade-overlay fade-left ${scrollPosition > 10 ? 'visible' : ''}`}></div>
                 <div className={`fade-overlay fade-right ${scrollPosition < maxScroll - 10 ? 'visible' : ''}`}></div>
             </div>

@@ -58,11 +58,37 @@
     overflow: hidden;
 }
 
+.hobby-image-skeleton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #1a1a2e 25%, #2a2a4e 50%, #1a1a2e 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
 .hobby-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+}
+
+.hobby-image.loading {
+    opacity: 0;
+}
+
+.hobby-image.loaded {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
 }
 
 .hobby-card:hover .hobby-image {
