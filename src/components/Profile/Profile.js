@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import profilePic from '../../assets/profile-picture.png';
+import profilePic from '../../assets/profile.png';
 import './Profile.css';
 
 const Profile = () => {
