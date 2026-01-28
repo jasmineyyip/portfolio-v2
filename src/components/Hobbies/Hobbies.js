@@ -7,7 +7,7 @@ const hobbies = [
     {
         id: 1,
         title: "Rock Climbing",
-        description: "Vegas trip where we boulder by day, roll dice by night",
+        description: "Gambling (with my life) in Vegas (at Red Rock Canyon)",
         imagePath: "hobbies/climbing.png"
     },
     {
