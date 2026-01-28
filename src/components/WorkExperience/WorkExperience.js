@@ -5,16 +5,25 @@ import { ref, getDownloadURL } from 'firebase/storage';
 
 const workData = [
     {
-        id: 1,
+        id: 'tessera-labs',
         companyName: 'Tessera Labs',
         jobTitle: 'Software Engineer Intern',
-        location: 'San Jose, CA',
+        location: 'San Jose, CA (Remote)',
         jobType: 'Internship',
-        dateRange: 'Jan 2026 – April 2026',
+        dateRange: 'Jan 2026 – Present',
         logoPath: 'company_logos/tessera_labs.jpeg'
     },
+        {
+        id: 'havard-cepr',
+        companyName: 'Harvard Center for Education Policy Research',
+        jobTitle: 'ML Research Assistant',
+        location: 'Cambridge, MA (Remote)',
+        jobType: 'Part-time',
+        dateRange: 'Oct 2025 – Present',
+        logoPath: 'company_logos/harvard.png'
+    },
     {
-        id: 2,
+        id: 'linkedin',
         companyName: 'LinkedIn',
         jobTitle: 'Software Engineer Intern',
         location: 'Mountain View, CA',
@@ -23,7 +32,7 @@ const workData = [
         logoPath: 'company_logos/linkedin.png'
     },
     {
-        id: 3,
+        id: 'goldman-sachs',
         companyName: 'Goldman Sachs',
         jobTitle: 'Emerging Leaders Series - Engineering Scholar',
         location: 'Dallas, TX',
@@ -32,7 +41,7 @@ const workData = [
         logoPath: 'company_logos/goldman_sachs.png'
     },
     {
-        id: 4,
+        id: 'usc',
         companyName: 'USC Spatial Sciences Institute',
         jobTitle: 'Mobile App Developer',
         location: 'Los Angeles, CA',
@@ -41,8 +50,8 @@ const workData = [
         logoPath: 'company_logos/usc.jpeg'
     },
     {
-        id: 5,
-        companyName: 'Sara',
+        id: 'sara',
+        companyName: 'Sara Speech',
         jobTitle: 'Software Engineer Intern',
         location: 'Los Angeles, CA',
         jobType: 'Internship',
@@ -50,7 +59,7 @@ const workData = [
         logoPath: 'company_logos/sara.png'
     },
     {
-        id: 6,
+        id: 'serato',
         companyName: 'Serato',
         jobTitle: 'Software Engineer Intern',
         location: 'Auckland, NZ',
@@ -59,7 +68,7 @@ const workData = [
         logoPath: 'company_logos/serato.png'
     },
     {
-        id: 7,
+        id: 'power-trip',
         companyName: 'Power Trip',
         jobTitle: 'Software Engineer Intern',
         location: 'Wellington, NZ',
