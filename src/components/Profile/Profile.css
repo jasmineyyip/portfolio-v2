@@ -83,7 +83,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     flex-wrap: wrap;
 }
 
@@ -128,14 +128,9 @@
 
 @media (max-width: 480px) {
     .profile-content {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: flex;
+        align-items: flex-end;
         gap: 20px;
-    }
-
-    .profile-stats {
-        gap: 2px;
-        justify-content: center;
     }
 
     .stat-separator {
@@ -144,6 +139,7 @@
     }
 
     .profile-name {
-        font-size: 2rem;
+        font-size: 1.6rem;
+        margin-bottom: 14px;
     }
 }
